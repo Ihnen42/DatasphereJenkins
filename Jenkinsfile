@@ -6,6 +6,7 @@ pipeline {
     stages {
         stage('node') {
             steps {
+                sh 'npm i dotenv'
                 sh 'npm list'
                 sh 'datasphere -v'
                 sh 'node datasphere-cli-jenkins/src/download-objects-from-a-space.js'
