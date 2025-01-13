@@ -9,6 +9,7 @@ pipeline {
                 sh 'npm i dotenv'
                 sh 'npm list'
                 sh 'datasphere -v'
+                echo params.ENVIRONMENT >> .env
                 sh 'node datasphere-cli-jenkins/src/download-objects-from-a-space.js'
             }
         }
