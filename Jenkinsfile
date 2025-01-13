@@ -8,6 +8,7 @@ pipeline {
             steps {
                 sh 'npm version'
                 sh 'datasphere -v'
+                sh 'node datasphere-cli-jenkins/src/download-objects-from-a-space.js'
             }
         }
     }
