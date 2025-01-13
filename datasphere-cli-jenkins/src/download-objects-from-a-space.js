@@ -47,7 +47,7 @@ const objectTypeGroup = OBJECT_TYPE_COMMANDS.reduce((acc, objectTypeCmd) => {
  * Download objects from the space to the output directory.
  * Create the output directory first if it does not exist.
  */
-const outputDir = path.join(homedir(), 'SAP_Datasphere', tenantConfig.space)
+const outputDir = path.join('SAP_Datasphere', tenantConfig.space)
 if (!fs.existsSync(outputDir)) {
     logWarn(`The output directory does not exist, try to create ${outputDir}.`)
     fs.mkdirSync(outputDir, { recursive: true })
