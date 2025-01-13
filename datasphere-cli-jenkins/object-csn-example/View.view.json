@@ -1,0 +1,56 @@
+{
+    "definitions": {
+        "View": {
+            "kind": "entity",
+            "elements": {
+                "ID": {
+                    "@EndUserText.label": "ID",
+                    "type": "cds.String",
+                    "length": 100,
+                    "key": true,
+                    "notNull": true
+                },
+                "Name": {
+                    "@EndUserText.label": "Name",
+                    "type": "cds.String",
+                    "length": 100
+                }
+            },
+            "query": {
+                "SELECT": {
+                    "from": {
+                        "ref": ["LocalTable"]
+                    },
+                    "columns": [
+                        {
+                            "key": true,
+                            "ref": ["ID"]
+                        },
+                        {
+                            "ref": ["Name"]
+                        }
+                    ]
+                }
+            },
+            "@EndUserText.label": "View",
+            "@ObjectModel.modelingPattern": {
+                "#": "DATA_STRUCTURE"
+            },
+            "@ObjectModel.supportedCapabilities": [
+                {
+                    "#": "DATA_STRUCTURE"
+                }
+            ],
+            "@DataWarehouse.consumption.external": false
+        }
+    },
+    "editorSettings": {
+        "View": {
+            "editor": {
+                "lastModifier": "GRAPHICALVIEWBUILDER",
+                "default": "GRAPHICALVIEWBUILDER"
+            },
+            "uiModel": "{\"contents\":{\"173e5b8d-63f2-4d92-98b4-4d7c4c8dad2f\":{\"classDefinition\":\"sap.cdw.querybuilder.Model\",\"name\":\"View\",\"label\":\"View\",\"modificationDate\":0,\"deploymentDate\":0,\"#objectStatus\":0,\"output\":\"f45aa3d0-2a9c-4111-8606-e51845fc72e2\",\"nodes\":{\"f45aa3d0-2a9c-4111-8606-e51845fc72e2\":{\"name\":\"View_1\"},\"fb6f8cad-27c9-47d7-b600-2c2011d95239\":{\"name\":\"LocalTable\"}},\"diagrams\":{\"4f9df549-d534-488c-a599-7ae178910913\":{}}},\"f45aa3d0-2a9c-4111-8606-e51845fc72e2\":{\"classDefinition\":\"sap.cdw.querybuilder.Output\",\"name\":\"View_1\",\"type\":\"graphicView\",\"isPinToMemoryEnabled\":false,\"isAllowConsumption\":false,\"modificationDate\":0,\"deploymentDate\":0,\"#objectStatus\":0,\"elements\":{\"55e71e11-d89c-46e2-81e3-6f18fb0f7233\":{\"name\":\"ID\"},\"a76cc56f-ade9-4461-8840-c1e81424e3cf\":{\"name\":\"Name\"}}},\"4f9df549-d534-488c-a599-7ae178910913\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.Diagram\",\"symbols\":{\"751f7a8a-177b-4533-aee4-8df93a4d9266\":{},\"31d36a04-864e-4766-9fa6-7914d82f037c\":{\"name\":\"Entity Symbol 1\"},\"556bedd4-9421-4270-960b-7362b9d0ea3c\":{}}},\"751f7a8a-177b-4533-aee4-8df93a4d9266\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.OutputSymbol\",\"x\":47,\"y\":-20,\"width\":140,\"height\":40,\"object\":\"f45aa3d0-2a9c-4111-8606-e51845fc72e2\"},\"fb6f8cad-27c9-47d7-b600-2c2011d95239\":{\"classDefinition\":\"sap.cdw.querybuilder.Entity\",\"name\":\"LocalTable\",\"label\":\"LocalTable\",\"type\":9,\"isPinToMemoryEnabled\":false,\"isAllowConsumption\":false,\"isHiddenInUi\":false,\"modificationDate\":0,\"deploymentDate\":1704692950000,\"#objectStatus\":\"1\",\"elements\":{\"2c14ea07-4e1f-41f5-8b4f-73fc6b25c787\":{\"name\":\"ID\"},\"d8de3bd4-fb68-4110-aeaa-fcd8d51214e0\":{\"name\":\"Name\"}},\"successorNode\":\"f45aa3d0-2a9c-4111-8606-e51845fc72e2\"},\"2c14ea07-4e1f-41f5-8b4f-73fc6b25c787\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ID\",\"label\":\"ID\",\"newName\":\"ID\",\"indexOrder\":0,\"isKey\":true,\"length\":100,\"precision\":0,\"scale\":0,\"isNotNull\":true,\"successorElement\":\"55e71e11-d89c-46e2-81e3-6f18fb0f7233\"},\"d8de3bd4-fb68-4110-aeaa-fcd8d51214e0\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Name\",\"label\":\"Name\",\"newName\":\"Name\",\"indexOrder\":1,\"length\":100,\"precision\":0,\"scale\":0,\"successorElement\":\"a76cc56f-ade9-4461-8840-c1e81424e3cf\"},\"31d36a04-864e-4766-9fa6-7914d82f037c\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.EntitySymbol\",\"name\":\"Entity Symbol 1\",\"x\":-163,\"y\":-20,\"width\":160,\"height\":40,\"displayName\":\"Entity Symbol 1\",\"object\":\"fb6f8cad-27c9-47d7-b600-2c2011d95239\"},\"55e71e11-d89c-46e2-81e3-6f18fb0f7233\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ID\",\"label\":\"ID\",\"newName\":\"ID\",\"indexOrder\":0,\"isKey\":true,\"length\":100,\"precision\":0,\"scale\":0,\"isNotNull\":true},\"a76cc56f-ade9-4461-8840-c1e81424e3cf\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Name\",\"label\":\"Name\",\"newName\":\"Name\",\"indexOrder\":1,\"length\":100,\"precision\":0,\"scale\":0},\"556bedd4-9421-4270-960b-7362b9d0ea3c\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.AssociationSymbol\",\"points\":\"-3,0 47,0\",\"contentOffsetX\":5,\"contentOffsetY\":5,\"sourceSymbol\":\"31d36a04-864e-4766-9fa6-7914d82f037c\",\"targetSymbol\":\"751f7a8a-177b-4533-aee4-8df93a4d9266\"}}}"
+        }
+    }
+}

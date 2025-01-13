@@ -1,0 +1,35 @@
+{
+    "taskchains": {
+        "TaskChain": {
+            "kind": "sap.dwc.taskChain",
+            "@EndUserText.label": "TaskChain",
+            "nodes": [
+                {
+                    "id": 0,
+                    "type": "START"
+                },
+                {
+                    "id": 1,
+                    "type": "TASK",
+                    "taskIdentifier": {
+                        "applicationId": "DATA_FLOWS",
+                        "activity": "EXECUTE",
+                        "objectId": "DataFlow"
+                    }
+                }
+            ],
+            "links": [
+                {
+                    "startNode": {
+                        "nodeId": 0,
+                        "statusRequired": "ANY"
+                    },
+                    "endNode": {
+                        "nodeId": 1
+                    },
+                    "id": 0
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "definitions": {
+        "SAP.TIME": {
+            "kind": "context",
+            "@EndUserText.label": "TIME"
+        }
+    }
+}

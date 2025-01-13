@@ -1,0 +1,12 @@
+{
+    "definitions": {
+        "Type": {
+            "kind": "type",
+            "@EndUserText.label": "Character String",
+            "@DataWarehouse.contentImport.readOnly": true,
+            "type": "cds.String",
+            "doc": "Property length obligatory when referencing this type",
+            "length": 1333
+        }
+    }
+}

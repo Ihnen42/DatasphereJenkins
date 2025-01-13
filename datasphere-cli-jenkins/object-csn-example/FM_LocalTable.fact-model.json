@@ -1,0 +1,111 @@
+{
+    "definitions": {
+        "FM_LocalTable": {
+            "kind": "entity",
+            "@EndUserText.label": "FM_LocalTable",
+            "@cds.persistence.skip": true,
+            "@ObjectModel.semanticObject": {
+                "=": "FM_LocalTable"
+            },
+            "@ObjectModel.modelingPattern": {
+                "#": "DWC_FACT_MODEL"
+            },
+            "@ObjectModel.supportedCapabilities": [
+                {
+                    "#": "DWC_FACT_MODEL"
+                }
+            ],
+            "@Analytics.dataCategory": {
+                "#": "sap.dwc.factModel"
+            },
+            "@AccessControl.authorizationCheck": "#NOT_REQUIRED",
+            "@DataWarehouse.dataAccessControl.authorizationScenarioUsage": [],
+            "@ObjectModel.alternativeKey": [],
+            "elements": {},
+            "query": {
+                "SELECT": {
+                    "from": {
+                        "ref": ["BE_LocalTable_V1"]
+                    },
+                    "columns": []
+                }
+            }
+        },
+        "FM_LocalTable_V1": {
+            "kind": "entity",
+            "@EndUserText.label": "FM_LocalTable: VFM_LocalTable FM_LocalTable_V1",
+            "@cds.persistence.skip": true,
+            "@ObjectModel.semanticObject": {
+                "=": "FM_LocalTable"
+            },
+            "@ObjectModel.modelingPattern": {
+                "#": "DWC_FACT_MODEL_VARIANT"
+            },
+            "@ObjectModel.supportedCapabilities": [
+                {
+                    "#": "DWC_FACT_MODEL_VARIANT"
+                }
+            ],
+            "@AccessControl.authorizationCheck": "#NOT_REQUIRED",
+            "@DataWarehouse.dataAccessControl.authorizationScenarioUsage": [],
+            "@ObjectModel.alternativeKey": [],
+            "elements": {},
+            "query": {
+                "SELECT": {
+                    "from": {
+                        "ref": ["BE_LocalTable_V1"]
+                    },
+                    "columns": []
+                }
+            }
+        }
+    },
+    "businessLayerDefinitions": {
+        "FM_LocalTable": {
+            "identifier": {
+                "key": "FM_LocalTable"
+            },
+            "folder": {
+                "key": "0"
+            },
+            "StandardSemanticVersionIndex": 1,
+            "text": "FM_LocalTable",
+            "type": 2,
+            "versions": {
+                "1": {
+                    "identifier": {
+                        "key": "FM_LocalTable_V1"
+                    },
+                    "versionTitle": "Initial",
+                    "versionDescription": "Initial Version",
+                    "versionStatus": 1,
+                    "allowPublicAccess": false,
+                    "sourceModel": {
+                        "factSources": {
+                            "0": {
+                                "identifier": {
+                                    "key": "504e3406-9893-43ef-9a3d-df005922d07b"
+                                },
+                                "dataEntity": {
+                                    "key": "BE_LocalTable",
+                                    "versionKey": "BE_LocalTable_V1",
+                                    "type": 1
+                                },
+                                "text": "BE_LocalTable"
+                            }
+                        },
+                        "dimensionSources": {}
+                    },
+                    "attributes": {},
+                    "authorizationScenarios": [],
+                    "filters": {},
+                    "hierarchies": {},
+                    "measures": {},
+                    "isSelectedVersion": true
+                }
+            },
+            "exposedAssociations": {},
+            "Perspectives": []
+        }
+    }
+}

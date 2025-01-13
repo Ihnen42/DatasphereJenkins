@@ -1,0 +1,308 @@
+{
+    "dataflows": {
+        "DataFlow": {
+            "kind": "sap.dis.dataflow",
+            "@EndUserText.label": "DataFlow",
+            "contents": {
+                "description": "DataFlow",
+                "processes": {
+                    "source1": {
+                        "component": "com.sap.database.table.consumer",
+                        "metadata": {
+                            "label": "RemoteTable",
+                            "x": 189,
+                            "y": 406,
+                            "height": 60,
+                            "width": 120,
+                            "config": {
+                                "service": "HANA",
+                                "hanaConnection": {
+                                    "configurationType": "Configuration Manager",
+                                    "connectionID": "$DWC"
+                                },
+                                "qualifiedName": "RemoteTable",
+                                "dwcEntity": "RemoteTable",
+                                "remoteObjectType": "TABLE",
+                                "fetchSize": 1000,
+                                "forceFetchSize": false,
+                                "failOnStringTruncation": true
+                            },
+                            "outports": [
+                                {
+                                    "name": "outTable",
+                                    "type": "table",
+                                    "vtype-ID": "$INLINE.source1_outTable"
+                                }
+                            ]
+                        }
+                    },
+                    "target1": {
+                        "component": "com.sap.database.table.producer",
+                        "metadata": {
+                            "label": "LocalTable",
+                            "x": 431,
+                            "y": 401,
+                            "height": 60,
+                            "width": 120,
+                            "config": {
+                                "service": "HANA",
+                                "hanaConnection": {
+                                    "configurationType": "Configuration Manager",
+                                    "connectionID": "$DWC"
+                                },
+                                "qualifiedName": "LocalTable",
+                                "dwcEntity": "LocalTable",
+                                "remoteObjectType": "TABLE",
+                                "fetchSize": 1000,
+                                "forceFetchSize": false,
+                                "failOnStringTruncation": true,
+                                "mode": "append",
+                                "upsert": false,
+                                "batchSize": 1000,
+                                "forceBatchSize": false,
+                                "attributeMappings": [
+                                    {
+                                        "expression": "\"CustomerID\"",
+                                        "target": "ID"
+                                    },
+                                    {
+                                        "expression": "\"ShipName\"",
+                                        "target": "Name"
+                                    }
+                                ],
+                                "hanaAdaptedDataset": {
+                                    "schema": {
+                                        "genericType": "TABLE",
+                                        "tableBasedRepresentation": {
+                                            "attributes": [
+                                                {
+                                                    "name": "ID",
+                                                    "templateType": "string",
+                                                    "length": 100
+                                                },
+                                                {
+                                                    "name": "Name",
+                                                    "templateType": "string",
+                                                    "length": 100
+                                                }
+                                            ],
+                                            "uniqueKeys": [
+                                                {
+                                                    "attributeReferences": ["ID"]
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            },
+                            "inports": [
+                                {
+                                    "name": "inTable",
+                                    "type": "table",
+                                    "vtype-ID": "$INLINE.source1_outTable"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "groups": [],
+                "connections": [
+                    {
+                        "metadata": {
+                            "points": "314.5,436 370.25,436 370.25,431 426,431"
+                        },
+                        "src": {
+                            "port": "outTable",
+                            "process": "source1"
+                        },
+                        "tgt": {
+                            "port": "inTable",
+                            "process": "target1"
+                        }
+                    }
+                ],
+                "inports": {},
+                "outports": {},
+                "properties": {},
+                "vTypes": {
+                    "scalar": {
+                        "string_5": {
+                            "name": "string_5",
+                            "description": "String(5)",
+                            "vflow.type": "scalar",
+                            "template": "string",
+                            "value.length": 5
+                        },
+                        "decimal_19_4": {
+                            "name": "decimal_19_4",
+                            "description": "Decimal(19,4)",
+                            "vflow.type": "scalar",
+                            "template": "decimal",
+                            "value.precision": 19,
+                            "value.scale": 4
+                        },
+                        "string_40": {
+                            "name": "string_40",
+                            "description": "String(40)",
+                            "vflow.type": "scalar",
+                            "template": "string",
+                            "value.length": 40
+                        },
+                        "string_60": {
+                            "name": "string_60",
+                            "description": "String(60)",
+                            "vflow.type": "scalar",
+                            "template": "string",
+                            "value.length": 60
+                        },
+                        "string_15": {
+                            "name": "string_15",
+                            "description": "String(15)",
+                            "vflow.type": "scalar",
+                            "template": "string",
+                            "value.length": 15
+                        },
+                        "string_10": {
+                            "name": "string_10",
+                            "description": "String(10)",
+                            "vflow.type": "scalar",
+                            "template": "string",
+                            "value.length": 10
+                        }
+                    },
+                    "structure": {},
+                    "table": {
+                        "source1_outTable": {
+                            "name": "source1_outTable",
+                            "vflow.type": "table",
+                            "rows": {
+                                "components": [
+                                    {
+                                        "OrderID": {
+                                            "vflow.type": "scalar",
+                                            "vtype-ID": "com.sap.core.int32"
+                                        }
+                                    },
+                                    {
+                                        "CustomerID": {
+                                            "vflow.type": "scalar",
+                                            "vtype-ID": "$INLINE.string_5"
+                                        }
+                                    },
+                                    {
+                                        "EmployeeID": {
+                                            "vflow.type": "scalar",
+                                            "vtype-ID": "com.sap.core.int32"
+                                        }
+                                    },
+                                    {
+                                        "OrderDate": {
+                                            "vflow.type": "scalar",
+                                            "vtype-ID": "com.sap.core.timestamp"
+                                        }
+                                    },
+                                    {
+                                        "RequiredDate": {
+                                            "vflow.type": "scalar",
+                                            "vtype-ID": "com.sap.core.timestamp"
+                                        }
+                                    },
+                                    {
+                                        "ShippedDate": {
+                                            "vflow.type": "scalar",
+                                            "vtype-ID": "com.sap.core.timestamp"
+                                        }
+                                    },
+                                    {
+                                        "ShipVia": {
+                                            "vflow.type": "scalar",
+                                            "vtype-ID": "com.sap.core.int32"
+                                        }
+                                    },
+                                    {
+                                        "Freight": {
+                                            "vflow.type": "scalar",
+                                            "vtype-ID": "$INLINE.decimal_19_4"
+                                        }
+                                    },
+                                    {
+                                        "ShipName": {
+                                            "vflow.type": "scalar",
+                                            "vtype-ID": "$INLINE.string_40"
+                                        }
+                                    },
+                                    {
+                                        "ShipAddress": {
+                                            "vflow.type": "scalar",
+                                            "vtype-ID": "$INLINE.string_60"
+                                        }
+                                    },
+                                    {
+                                        "ShipCity": {
+                                            "vflow.type": "scalar",
+                                            "vtype-ID": "$INLINE.string_15"
+                                        }
+                                    },
+                                    {
+                                        "ShipRegion": {
+                                            "vflow.type": "scalar",
+                                            "vtype-ID": "$INLINE.string_15"
+                                        }
+                                    },
+                                    {
+                                        "ShipPostalCode": {
+                                            "vflow.type": "scalar",
+                                            "vtype-ID": "$INLINE.string_10"
+                                        }
+                                    },
+                                    {
+                                        "ShipCountry": {
+                                            "vflow.type": "scalar",
+                                            "vtype-ID": "$INLINE.string_15"
+                                        }
+                                    }
+                                ]
+                            },
+                            "keys": ["OrderID"]
+                        }
+                    }
+                },
+                "metadata": {
+                    "dwc-isPrimaryKeysProcessed": true,
+                    "dwc-restartOnFail": false
+                },
+                "parameters": {},
+                "parameterMapping": {}
+            },
+            "sources": {
+                "RemoteTable": {
+                    "elements": {
+                        "OrderID": {},
+                        "CustomerID": {},
+                        "EmployeeID": {},
+                        "OrderDate": {},
+                        "RequiredDate": {},
+                        "ShippedDate": {},
+                        "ShipVia": {},
+                        "Freight": {},
+                        "ShipName": {},
+                        "ShipAddress": {},
+                        "ShipCity": {},
+                        "ShipRegion": {},
+                        "ShipPostalCode": {},
+                        "ShipCountry": {}
+                    }
+                }
+            },
+            "targets": {
+                "LocalTable": {
+                    "elements": {
+                        "ID": {},
+                        "Name": {}
+                    }
+                }
+            },
+            "connections": {}
+        }
+    }
+}

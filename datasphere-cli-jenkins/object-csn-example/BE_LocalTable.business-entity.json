@@ -1,0 +1,173 @@
+{
+    "definitions": {
+        "BE_LocalTable": {
+            "kind": "entity",
+            "@EndUserText.label": "BE_LocalTable",
+            "@cds.persistence.skip": true,
+            "@ObjectModel.semanticObject": {
+                "=": "BE_LocalTable"
+            },
+            "@ObjectModel.modelingPattern": "#_DWC_BUSINESS_ENTITY",
+            "@ObjectModel.supportedCapabilities": ["#_DWC_BUSINESS_ENTITY"],
+            "@Analytics.dataCategory": {
+                "#": "DIMENSION"
+            },
+            "@AccessControl.authorizationCheck": "#NOT_REQUIRED",
+            "@DataWarehouse.dataAccessControl.authorizationScenarioUsage": [],
+            "@ObjectModel.alternativeKey": [
+                {
+                    "label": "ID",
+                    "id": {
+                        "=": "ID"
+                    },
+                    "uniquess": {
+                        "#": "UNIQUE_IF_NOT_INITIAL"
+                    },
+                    "element": ["ID_0"]
+                }
+            ],
+            "elements": {
+                "ID_0": {
+                    "@EnduserText.label": "ID",
+                    "@Analytics.hidden": true,
+                    "type": "cds.string"
+                }
+            }
+        },
+        "BE_LocalTable_V1": {
+            "kind": "entity",
+            "@EndUserText.label": "BE_LocalTable: V1 Initial",
+            "@cds.persistence.skip": true,
+            "@ObjectModel.semanticObject": {
+                "=": "BE_LocalTable"
+            },
+            "@ObjectModel.modelingPattern": "#_DWC_BUSINESS_ENTITY_VARIANT",
+            "@ObjectModel.supportedCapabilities": ["#_DWC_BUSINESS_ENTITY_VARIANT"],
+            "@AccessControl.authorizationCheck": "#NOT_REQUIRED",
+            "@DataWarehouse.dataAccessControl.authorizationScenarioUsage": [],
+            "@ObjectModel.alternativeKey": [
+                {
+                    "label": "ID",
+                    "id": {
+                        "=": "ID"
+                    },
+                    "uniquess": {
+                        "#": "UNIQUE_IF_NOT_INITIAL"
+                    },
+                    "element": ["ID_0"]
+                }
+            ],
+            "elements": {
+                "ID_0": {
+                    "@EnduserText.label": "ID",
+                    "@Analytics.hidden": true,
+                    "type": "cds.string"
+                },
+                "ID": {
+                    "@EnduserText.label": "ID",
+                    "type": "cds.String",
+                    "length": 100
+                }
+            },
+            "query": {
+                "SELECT": {
+                    "from": {
+                        "ref": ["LocalTable"]
+                    },
+                    "columns": [
+                        {
+                            "ref": ["ID"],
+                            "as": "ID_0"
+                        },
+                        {
+                            "ref": [null],
+                            "as": "ID"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "businessLayerDefinitions": {
+        "BE_LocalTable": {
+            "AllowPublicAccess": true,
+            "Associations": [],
+            "AuthorizationScenarioAssignment": [],
+            "Hierarchies": [],
+            "Keys": [
+                {
+                    "KeyTitle": "ID",
+                    "KeyTechnicalTitle": "ID",
+                    "KeyMembers": {
+                        "0": {
+                            "KeyMemberSequence": 0,
+                            "KeyMemberTitle": "ID",
+                            "Description": null,
+                            "SampleValue": null
+                        }
+                    }
+                }
+            ],
+            "StandardBusinessEntityVersion": {
+                "VersionTechnicalTitle": "BE_LocalTable_V1"
+            },
+            "TargetPackage": {
+                "PackageTechnicalTitle": "0"
+            },
+            "TechnicalTitle": "BE_LocalTable",
+            "Title": "BE_LocalTable",
+            "Type": 3,
+            "Versions": [
+                {
+                    "AssociationKeyMapping": [],
+                    "Attributes": [
+                        {
+                            "Title": "ID",
+                            "AttributeTechnicalTitle": "ID",
+                            "AttributeType": 0,
+                            "Formula": null,
+                            "IsAuxiliary": false,
+                            "KeyFieldAttributeRepresentation": {
+                                "AttributeRepresentationTechnicalTitle": "ID_ID",
+                                "DataType": {
+                                    "Type": "NVARCHAR",
+                                    "Length": 100
+                                },
+                                "SourceAttribute": "ID"
+                            },
+                            "KeyField": "ID",
+                            "TextField": null
+                        }
+                    ],
+                    "AuthorizationScenarioRestrictionContexts": [],
+                    "Description": "Initial Version",
+                    "HierarchyKeyMemberMapping": [],
+                    "HierarchySourceMapping": [],
+                    "InputParameters": [],
+                    "KeyMapping": [
+                        {
+                            "KeyTechnicalTitle": "ID",
+                            "TargetKeyMember": {
+                                "0": {
+                                    "DataType": {
+                                        "Type": "NVARCHAR",
+                                        "Length": 100
+                                    },
+                                    "FieldName": "ID"
+                                }
+                            }
+                        }
+                    ],
+                    "Measures": [],
+                    "SourceSpaceID": "CLI_WRITE",
+                    "SourceTechnicalName": "LocalTable",
+                    "Status": 1,
+                    "Title": "Initial",
+                    "VersionNumber": 1,
+                    "VersionTechnicalTitle": "BE_LocalTable_V1",
+                    "IsSelectedVersion": false
+                }
+            ]
+        }
+    }
+}

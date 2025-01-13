@@ -1,0 +1,20 @@
+{
+    "definitions": {
+        "DataAccessControl": {
+            "@DataWarehouse.dataAccessControl.definition": {
+                "principalElement": "Name",
+                "sourceEntity": "LocalTable"
+            },
+            "kind": "entity",
+            "@EndUserText.label": "DataAccessControl",
+            "@DataWarehouse.businessDefinition.contact": "",
+            "elements": {
+                "ID": {
+                    "length": 100,
+                    "@EndUserText.label": "ID",
+                    "type": "cds.String"
+                }
+            }
+        }
+    }
+}

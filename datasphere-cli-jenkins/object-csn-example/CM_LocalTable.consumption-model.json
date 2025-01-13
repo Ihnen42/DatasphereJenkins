@@ -1,0 +1,206 @@
+{
+    "definitions": {
+        "CM_LocalTable": {
+            "kind": "entity",
+            "@EndUserText.label": "CM_LocalTable",
+            "@cds.persistence.skip": true,
+            "@ObjectModel.semanticObject": {
+                "=": "CM_LocalTable"
+            },
+            "@ObjectModel.modelingPattern": {
+                "#": "DWC_CONSUMPTION_MODEL"
+            },
+            "@ObjectModel.supportedCapabilities": [
+                {
+                    "#": "DWC_CONSUMPTION_MODEL"
+                }
+            ],
+            "@Analytics.dataCategory": {
+                "#": "sap.dwc.consumptionModel"
+            },
+            "@AccessControl.authorizationCheck": "#NOT_REQUIRED",
+            "@DataWarehouse.dataAccessControl.authorizationScenarioUsage": [],
+            "@ObjectModel.alternativeKey": [],
+            "elements": {
+                "ID": {
+                    "@EndUserText.label": "ID",
+                    "type": "cds.String",
+                    "length": 100
+                }
+            },
+            "query": {
+                "SELECT": {
+                    "from": {
+                        "ref": ["BE_LocalTable_V1"]
+                    },
+                    "columns": [
+                        {
+                            "ref": ["ID"]
+                        }
+                    ]
+                }
+            }
+        },
+        "PP_LocalTable": {
+            "kind": "entity",
+            "@EndUserText.label": "PP_LocalTable",
+            "elements": {
+                "ID": {
+                    "type": "cds.String",
+                    "@EndUserText.label": "ID",
+                    "length": 100,
+                    "@Analytics.dimension": true
+                }
+            },
+            "query": {
+                "SELECT": {
+                    "from": {
+                        "SELECT": {
+                            "from": {
+                                "ref": ["LocalTable"],
+                                "as": "BE_LocalTable"
+                            },
+                            "columns": [
+                                {
+                                    "ref": ["BE_LocalTable", "ID"],
+                                    "as": "ID"
+                                }
+                            ]
+                        },
+                        "as": "Aggregate_BE_LocalTable"
+                    },
+                    "columns": [
+                        {
+                            "ref": ["Aggregate_BE_LocalTable", "ID"],
+                            "as": "ID"
+                        }
+                    ]
+                }
+            },
+            "@ObjectModel.supportedCapabilities": [
+                {
+                    "#": "ANALYTICAL_PROVIDER"
+                }
+            ],
+            "@ObjectModel.semanticObject": {
+                "=": "CM_LocalTable"
+            },
+            "@ObjectModel.modelingPattern": {
+                "#": "ANALYTICAL_CUBE"
+            },
+            "@DataWarehouse.editorType": {
+                "#": "DWCBusinessLayerEditor"
+            },
+            "@DataWarehouse.consumption.external": true
+        }
+    },
+    "businessLayerDefinitions": {
+        "CM_LocalTable": {
+            "identifier": {
+                "key": "CM_LocalTable"
+            },
+            "folder": {
+                "key": "0"
+            },
+            "type": 1,
+            "text": "CM_LocalTable",
+            "StandardSemanticVersionIndex": 1,
+            "versions": {
+                "1": {
+                    "identifier": {
+                        "key": "CM_LocalTable_V1"
+                    },
+                    "allowPublicAccess": true,
+                    "versionStatus": 1,
+                    "versionTitle": "Initial",
+                    "versionDescription": "Initial Version",
+                    "sourceModel": {
+                        "factSources": {
+                            "0": {
+                                "identifier": {
+                                    "key": "ae87c88b-a04e-429e-8de5-d56eaf7be35d"
+                                },
+                                "dataEntity": {
+                                    "key": "BE_LocalTable",
+                                    "versionKey": "BE_LocalTable_V1",
+                                    "type": 1
+                                },
+                                "text": "BE_LocalTable"
+                            }
+                        },
+                        "dimensionSources": {}
+                    },
+                    "attributes": {
+                        "ID": {
+                            "text": "ID",
+                            "attributeType": 2,
+                            "idRepresentation": {
+                                "RepresentationTechnicalTitle": "ID_ID"
+                            },
+                            "attributeMapping": {
+                                "0": {
+                                    "key": "ID",
+                                    "representationKey": "ID_ID"
+                                }
+                            }
+                        }
+                    },
+                    "hierarchies": {},
+                    "authorizationScenarios": [],
+                    "filters": {},
+                    "inputParameters": {},
+                    "measures": {}
+                }
+            },
+            "hdiContentVersion": {
+                "major": 5,
+                "minor": 1,
+                "patch": 25
+            },
+            "Perspectives": [
+                {
+                    "text": "PP_LocalTable",
+                    "identifier": {
+                        "key": "PP_LocalTable"
+                    },
+                    "semanticModel": {
+                        "identifier": {
+                            "key": "CM_LocalTable"
+                        },
+                        "versionKey": "CM_LocalTable_V1"
+                    },
+                    "businessPurpose": {
+                        "businessDescription": null,
+                        "purpose": null,
+                        "businessContact": null,
+                        "businessResponsibleTeam": null,
+                        "businessTags": []
+                    },
+                    "perspectiveFields": {
+                        "measures": [],
+                        "attributes": [
+                            {
+                                "semanticAttributeTechnicalTitle": "ID",
+                                "perspectiveAttributeIdentifier": "ID",
+                                "isInOutput": true
+                            }
+                        ],
+                        "hierarchies": []
+                    },
+                    "inputParameters": [],
+                    "aggregateFilters": [],
+                    "filter": {},
+                    "sortSteps": [],
+                    "rowLimit": 1000,
+                    "olapHintActive": false,
+                    "cacheData": {
+                        "cacheStrategy": 0,
+                        "cacheMaxAge": null,
+                        "cacheMaxWaitTime": null
+                    }
+                }
+            ]
+        },
+        "PP_LocalTable": {}
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "objects": {
+        "ERModel": {
+            "kind": "sap.dwc.erdiagram"
+        }
+    },
+    "editorSettings": {
+        "ERModel": {
+            "editor": {
+                "lastModifier": "ERMODELER",
+                "default": "ERMODELER"
+            },
+            "uiModel": {
+                "guiModel": "{\"contents\":{\"37702508-4736-43d9-b428-11ef9ad08990\":{\"classDefinition\":\"sap.cdw.ermodeler.Model\",\"name\":\"ERModel\",\"label\":\"ERModel\",\"modificationDate\":0,\"deploymentDate\":0,\"#objectStatus\":0,\"entities\":{\"60e25a70-016e-4fed-baaf-e3f084a716e8\":{\"name\":\"LocalTable\"}},\"diagrams\":{\"22cea566-149c-4c9b-b234-59fae1e178bf\":{}}},\"22cea566-149c-4c9b-b234-59fae1e178bf\":{\"classDefinition\":\"sap.cdw.ermodeler.ui.Diagram\",\"symbols\":{\"4b731b69-17b1-40d9-aa6e-d995d0b0b05e\":{\"name\":\"Table Symbol1\"}}},\"60e25a70-016e-4fed-baaf-e3f084a716e8\":{\"classDefinition\":\"sap.cdw.ermodeler.Table\",\"name\":\"LocalTable\",\"label\":\"LocalTable\",\"type\":9,\"isPinToMemoryEnabled\":false,\"modificationDate\":0,\"deploymentDate\":1704692950000,\"#objectStatus\":\"1\",\"elements\":{\"c2e08ec6-2576-4b27-be6d-1519763aef76\":{\"name\":\"ID\"},\"9f50dca4-471b-4353-9fab-33b6acd6cf01\":{\"name\":\"Name\"}}},\"c2e08ec6-2576-4b27-be6d-1519763aef76\":{\"classDefinition\":\"sap.cdw.commonmodel.Element\",\"name\":\"ID\",\"label\":\"ID\",\"length\":100,\"precision\":0,\"scale\":0,\"isKey\":true,\"isNotNull\":true,\"indexOrder\":0},\"9f50dca4-471b-4353-9fab-33b6acd6cf01\":{\"classDefinition\":\"sap.cdw.commonmodel.Element\",\"name\":\"Name\",\"label\":\"Name\",\"length\":100,\"precision\":0,\"scale\":0,\"indexOrder\":1},\"4b731b69-17b1-40d9-aa6e-d995d0b0b05e\":{\"classDefinition\":\"sap.cdw.ermodeler.ui.TableSymbol\",\"name\":\"Table Symbol1\",\"x\":728.48291015625,\"y\":314,\"width\":163.0341796875,\"height\":58,\"displayName\":\"Table Symbol1\",\"object\":\"60e25a70-016e-4fed-baaf-e3f084a716e8\"}}}",
+                "kind": "sap.dwc.erdiagram"
+            }
+        }
+    },
+    "definitions": {
+        "LocalTable": {}
+    },
+    "version": {
+        "csn": "1.0"
+    },
+    "meta": {
+        "creator": "ER Modeler",
+        "kind": "sap.dwc.ermodel",
+        "label": "ERModel"
+    },
+    "$version": "1.0"
+}

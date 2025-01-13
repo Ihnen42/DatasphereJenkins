@@ -1,0 +1,8 @@
+{
+    "definitions": {
+        "SAP": {
+            "kind": "context",
+            "@EndUserText.label": "SAP"
+        }
+    }
+}

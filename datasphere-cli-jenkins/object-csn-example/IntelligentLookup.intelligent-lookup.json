@@ -1,0 +1,507 @@
+{
+    "definitions": {
+        "IntelligentLookup": {
+            "kind": "entity",
+            "@EndUserText.label": "IntelligentLookup",
+            "@ObjectModel.modelingPattern": {
+                "#": "DATA_STRUCTURE"
+            },
+            "@ObjectModel.supportedCapabilities": [
+                {
+                    "#": "DATA_STRUCTURE"
+                },
+                {
+                    "#": "SQL_DATA_SOURCE"
+                }
+            ],
+            "elements": {
+                "INPUT_ID": {
+                    "@EndUserText.label": "INPUT_ID",
+                    "type": "cds.String",
+                    "length": 100,
+                    "key": true,
+                    "notNull": true
+                },
+                "INPUT_Name": {
+                    "@EndUserText.label": "INPUT_Name",
+                    "type": "cds.String",
+                    "length": 100
+                },
+                "LOOKUP_ID": {
+                    "@EndUserText.label": "LOOKUP_ID",
+                    "type": "cds.String",
+                    "length": 100
+                }
+            },
+            "@DataWarehouse.intelligentDataTransform": true,
+            "@cds.persistence.exists": true
+        }
+    },
+    "intelligentLookups": {
+        "IntelligentLookup": {
+            "version": "1.2.0",
+            "@EndUserText.label": "IntelligentLookup",
+            "contents": {
+                "properties": {},
+                "description": "Intelligent Lookup 1",
+                "processes": {
+                    "input1": {
+                        "component": "com.sap.database.table.consumer",
+                        "metadata": {
+                            "label": "View",
+                            "x": 12,
+                            "y": 12,
+                            "height": 64,
+                            "width": 128,
+                            "displayLabel": "View",
+                            "displayName": "View",
+                            "name": "View",
+                            "isNew": true,
+                            "isExecutebuttonClicked": true,
+                            "rowsCount": "0",
+                            "config": {
+                                "service": "HANA",
+                                "hanaConnection": {
+                                    "configurationType": "Configuration Manager",
+                                    "connectionID": "$DWC"
+                                },
+                                "qualifiedName": "View",
+                                "dwcEntity": "View",
+                                "mode": "append",
+                                "remoteObjectType": "VIEW",
+                                "idtConfig": {
+                                    "idtSourceType": "Input",
+                                    "keyColumns": ["ID"],
+                                    "pairingColumns": ["ID"]
+                                }
+                            },
+                            "outports": [
+                                {
+                                    "name": "outTable",
+                                    "type": "table",
+                                    "vtype-ID": "$INLINE.input1_outTable"
+                                }
+                            ]
+                        }
+                    },
+                    "lookup1": {
+                        "component": "com.sap.database.table.consumer",
+                        "metadata": {
+                            "label": "LocalTable",
+                            "x": 12,
+                            "y": 116,
+                            "height": 64,
+                            "width": 128,
+                            "displayLabel": "LocalTable",
+                            "displayName": "LocalTable",
+                            "name": "LocalTable",
+                            "isNew": true,
+                            "isExecutebuttonClicked": true,
+                            "rowsCount": "0",
+                            "config": {
+                                "service": "HANA",
+                                "hanaConnection": {
+                                    "configurationType": "Configuration Manager",
+                                    "connectionID": "$DWC"
+                                },
+                                "qualifiedName": "LocalTable",
+                                "dwcEntity": "LocalTable",
+                                "mode": "append",
+                                "remoteObjectType": "TABLE",
+                                "idtConfig": {
+                                    "idtSourceType": "Lookup",
+                                    "keyColumns": ["ID"],
+                                    "pairingColumns": ["ID"],
+                                    "returnColumns": ["ID"]
+                                }
+                            },
+                            "outports": [
+                                {
+                                    "name": "outTable",
+                                    "type": "table",
+                                    "vtype-ID": "$INLINE.lookup1_outTable"
+                                }
+                            ]
+                        }
+                    },
+                    "outputview1": {
+                        "component": "com.sap.intelligentlookup.outputview",
+                        "metadata": {
+                            "label": "Intelligent Lookup 1",
+                            "x": 420.9999990463257,
+                            "y": 64,
+                            "height": 64,
+                            "width": 128,
+                            "displayLabel": "Intelligent Lookup 1",
+                            "displayName": "Intelligent Lookup 1",
+                            "name": "Intelligent Lookup 1",
+                            "isNew": true,
+                            "config": {
+                                "service": "HANA",
+                                "hanaConnection": {
+                                    "configurationType": "Configuration Manager",
+                                    "connectionID": "$DWC"
+                                },
+                                "qualifiedName": "Intelligent Lookup 1",
+                                "dwcEntity": "Intelligent Lookup 1",
+                                "mode": "append",
+                                "remoteObjectType": "VIEW"
+                            },
+                            "inports": [
+                                {
+                                    "name": "inTable",
+                                    "type": "table",
+                                    "vtype-ID": "$INLINE.outputview1_inTable"
+                                }
+                            ]
+                        }
+                    },
+                    "rule1": {
+                        "component": "com.sap.intelligentlookup.rule",
+                        "metadata": {
+                            "label": "Rule",
+                            "x": 208.49999904632568,
+                            "y": 52,
+                            "height": 88,
+                            "width": 160,
+                            "isNew": true,
+                            "nodeType": "Rule",
+                            "config": {
+                                "matchDefinitions": {
+                                    "strategy": {
+                                        "type": "Exact"
+                                    },
+                                    "matchColumns": [
+                                        {
+                                            "inputColumn": {
+                                                "name": "ID",
+                                                "calculated": false
+                                            },
+                                            "lookupColumn": {
+                                                "name": "ID",
+                                                "calculated": false
+                                            }
+                                        }
+                                    ],
+                                    "caseSensitive": true,
+                                    "trimSpaces": true
+                                },
+                                "filters": {
+                                    "input": {
+                                        "expr": "",
+                                        "invalidExpr": false,
+                                        "errorExpr": ""
+                                    },
+                                    "lookup": {
+                                        "expr": "",
+                                        "invalidExpr": false,
+                                        "errorExpr": ""
+                                    }
+                                }
+                            },
+                            "inports": [
+                                {
+                                    "name": "inTable1",
+                                    "type": "table",
+                                    "vtype-ID": "$INLINE.input1_outTable"
+                                },
+                                {
+                                    "name": "inTable2",
+                                    "type": "table",
+                                    "vtype-ID": "$INLINE.lookup1_outTable"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "groups": [],
+                "connections": [
+                    {
+                        "metadata": {
+                            "points": "142.5,44 175.49999952316284,44 175.49999952316284,87 204.99999904632568,87"
+                        },
+                        "src": {
+                            "port": "outTable",
+                            "process": "input1"
+                        },
+                        "tgt": {
+                            "port": "inTable1",
+                            "process": "rule1"
+                        }
+                    },
+                    {
+                        "metadata": {
+                            "points": "142.5,148 175.49999952316284,148 175.49999952316284,105 204.99999904632568,105"
+                        },
+                        "src": {
+                            "port": "outTable",
+                            "process": "lookup1"
+                        },
+                        "tgt": {
+                            "port": "inTable2",
+                            "process": "rule1"
+                        }
+                    },
+                    {
+                        "metadata": {
+                            "points": "371.9999990463257,96 417.4999990463257,96"
+                        },
+                        "src": {
+                            "port": "outTable0",
+                            "process": "rule1"
+                        },
+                        "tgt": {
+                            "port": "inTable",
+                            "process": "outputview1"
+                        }
+                    }
+                ],
+                "inports": {},
+                "outports": {},
+                "vTypes": {
+                    "scalar": {
+                        "string_100": {
+                            "name": "string_100",
+                            "description": "String(100)",
+                            "vflow.type": "scalar",
+                            "template": "string",
+                            "value.length": 100
+                        }
+                    },
+                    "structure": {},
+                    "table": {
+                        "input1_outTable": {
+                            "name": "input1_outTable",
+                            "vflow.type": "table",
+                            "rows": {
+                                "components": [
+                                    {
+                                        "ID": {
+                                            "vflow.type": "scalar",
+                                            "vtype-ID": "$INLINE.string_100"
+                                        }
+                                    },
+                                    {
+                                        "Name": {
+                                            "vflow.type": "scalar",
+                                            "vtype-ID": "$INLINE.string_100"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        "lookup1_outTable": {
+                            "name": "lookup1_outTable",
+                            "vflow.type": "table",
+                            "rows": {
+                                "components": [
+                                    {
+                                        "ID": {
+                                            "vflow.type": "scalar",
+                                            "vtype-ID": "$INLINE.string_100"
+                                        }
+                                    },
+                                    {
+                                        "Name": {
+                                            "vflow.type": "scalar",
+                                            "vtype-ID": "$INLINE.string_100"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        "rule1_outTable0": {
+                            "name": "rule1_outTable0",
+                            "vflow.type": "table",
+                            "rows": {
+                                "components": []
+                            }
+                        },
+                        "rule1_outTable2": {
+                            "name": "rule1_outTable2",
+                            "vflow.type": "table",
+                            "rows": {
+                                "components": []
+                            }
+                        },
+                        "outputview1_inTable": {
+                            "name": "outputview1_inTable",
+                            "vflow.type": "table",
+                            "rows": {
+                                "components": [
+                                    {
+                                        "INPUT_ID": {
+                                            "vflow.type": "scalar",
+                                            "vtype-ID": "$INLINE.string_100"
+                                        }
+                                    },
+                                    {
+                                        "INPUT_Name": {
+                                            "vflow.type": "scalar",
+                                            "vtype-ID": "$INLINE.string_100"
+                                        }
+                                    },
+                                    {
+                                        "LOOKUP_ID": {
+                                            "vflow.type": "scalar",
+                                            "vtype-ID": "$INLINE.string_100"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "artifacts": {
+                "inputEntity": "View",
+                "lookupEntity": "LocalTable",
+                "returnColumns": ["ID"],
+                "pairingColumns": {
+                    "inputEntity": ["ID"],
+                    "lookupEntity": ["ID"]
+                },
+                "keyColumns": {
+                    "inputEntity": ["ID"],
+                    "lookupEntity": ["ID"]
+                },
+                "definitions": {
+                    "View": {
+                        "kind": "entity",
+                        "elements": {
+                            "ID": {
+                                "@EndUserText.label": "ID",
+                                "type": "cds.String",
+                                "length": 100,
+                                "key": true,
+                                "notNull": true
+                            },
+                            "Name": {
+                                "@EndUserText.label": "Name",
+                                "type": "cds.String",
+                                "length": 100
+                            }
+                        },
+                        "query": {
+                            "SELECT": {
+                                "from": {
+                                    "ref": ["LocalTable"]
+                                },
+                                "columns": [
+                                    {
+                                        "key": true,
+                                        "ref": ["ID"]
+                                    },
+                                    {
+                                        "ref": ["Name"]
+                                    }
+                                ]
+                            }
+                        },
+                        "@EndUserText.label": "View",
+                        "@ObjectModel.modelingPattern": {
+                            "#": "DATA_STRUCTURE"
+                        },
+                        "@ObjectModel.supportedCapabilities": [
+                            {
+                                "#": "DATA_STRUCTURE"
+                            }
+                        ],
+                        "@DataWarehouse.consumption.external": false,
+                        "_meta": {
+                            "dependencies": {
+                                "folderAssignment": null
+                            }
+                        }
+                    },
+                    "LocalTable": {
+                        "kind": "entity",
+                        "@EndUserText.label": "LocalTable",
+                        "@ObjectModel.modelingPattern": {
+                            "#": "DATA_STRUCTURE"
+                        },
+                        "@ObjectModel.supportedCapabilities": [
+                            {
+                                "#": "DATA_STRUCTURE"
+                            }
+                        ],
+                        "elements": {
+                            "ID": {
+                                "@EndUserText.label": "ID",
+                                "type": "cds.String",
+                                "length": 100,
+                                "key": true,
+                                "notNull": true
+                            },
+                            "Name": {
+                                "@EndUserText.label": "Name",
+                                "type": "cds.String",
+                                "length": 100
+                            }
+                        },
+                        "_meta": {
+                            "dependencies": {
+                                "folderAssignment": null
+                            }
+                        }
+                    }
+                },
+                "columnAliases": {
+                    "inputEntity": {
+                        "INPUT_ID": "ID",
+                        "INPUT_Name": "Name"
+                    },
+                    "lookupEntity": {
+                        "LOOKUP_ID": "ID",
+                        "LOOKUP_Name": "Name"
+                    }
+                },
+                "rules": {
+                    "rule1": {
+                        "ruleSource": {
+                            "sourceType": "Table"
+                        },
+                        "ruleConfig": {
+                            "matchDefinitions": {
+                                "strategy": {
+                                    "type": "Exact"
+                                },
+                                "matchColumns": [
+                                    {
+                                        "inputColumn": {
+                                            "name": "ID",
+                                            "calculated": false
+                                        },
+                                        "lookupColumn": {
+                                            "name": "ID",
+                                            "calculated": false
+                                        }
+                                    }
+                                ],
+                                "caseSensitive": true,
+                                "trimSpaces": true
+                            },
+                            "filters": {
+                                "input": {
+                                    "expr": "",
+                                    "invalidExpr": false,
+                                    "errorExpr": ""
+                                },
+                                "lookup": {
+                                    "expr": "",
+                                    "invalidExpr": false,
+                                    "errorExpr": ""
+                                }
+                            }
+                        }
+                    }
+                },
+                "outputViewProperties": {
+                    "includeUnmatchedRecords": true,
+                    "includeUnmatchedRecordColumn": false,
+                    "includeReviewMatches": true
+                }
+            }
+        }
+    }
+}

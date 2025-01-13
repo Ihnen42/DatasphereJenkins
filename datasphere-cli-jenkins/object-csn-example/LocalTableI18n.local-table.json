@@ -1,0 +1,37 @@
+{
+    "definitions": {
+        "LocalTable": {
+            "kind": "entity",
+            "@EndUserText.label": "{i18n>LocalTable@ENDUSERTEXT.LABEL}",
+            "@ObjectModel.modelingPattern": {
+                "#": "DATA_STRUCTURE"
+            },
+            "@ObjectModel.supportedCapabilities": [
+                {
+                    "#": "DATA_STRUCTURE"
+                }
+            ],
+            "elements": {
+                "ID": {
+                    "@EndUserText.label": "{i18n>LocalTable#ID@ENDUSERTEXT.LABEL}",
+                    "type": "cds.String",
+                    "length": 100,
+                    "key": true,
+                    "notNull": true
+                },
+                "Name": {
+                    "@EndUserText.label": "{i18n>LocalTable#Name@ENDUSERTEXT.LABEL}",
+                    "type": "cds.String",
+                    "length": 100
+                }
+            }
+        }
+    },
+    "i18n": {
+        "zf": {
+            "LocalTable@ENDUSERTEXT.LABEL": "本地表",
+            "LocalTable#ID@ENDUSERTEXT.LABEL": "标识",
+            "LocalTable#Name@ENDUSERTEXT.LABEL": "名称"
+        }
+    }
+}
