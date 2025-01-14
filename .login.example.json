@@ -1,0 +1,11 @@
+
+  {
+    "client-id": "<client_id>",
+    "client-secret": "<client_secret>",
+    "authorization-url": "<authorization-url>",
+    "token-url": "<token-url>",
+    "access-token": "<access-token>",
+    "refresh-token": "<refresh-token>",
+    "authorization-flow": "authorization_code",
+    "host": "<tenent-url>"
+  }
