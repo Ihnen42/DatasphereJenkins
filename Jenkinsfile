@@ -14,7 +14,7 @@ pipeline {
                 sh 'datasphere login --options-file .login.json'
                 sh 'datasphere spaces list --options-file .login.json'
 
-                //sh 'node datasphere-cli-jenkins/src/download-objects-from-a-space.js'
+                sh 'node datasphere-cli-jenkins/src/download-objects-from-a-space.js'
             }
         }
     }
